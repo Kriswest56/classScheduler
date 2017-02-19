@@ -2,6 +2,13 @@
 
 <h1>Sections</h1>
 
+<%= form_tag url_for(:controller => 'sections', :action => 'index'), :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<% end %>
+
 <table>
   <thead>
     <tr>

@@ -4,7 +4,11 @@ class SectionsController < ApplicationController
   # GET /sections
   # GET /sections.json
   def index
-    @sections = Section.all
+    if !params[:search].blank?
+      @sections = Section.where(:sectionNumber => params[:search])
+    else
+      @sections = Section.all
+    end
   end
 
   # GET /sections/1

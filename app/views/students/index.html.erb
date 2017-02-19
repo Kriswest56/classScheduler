@@ -2,6 +2,13 @@
 
 <h1>Students</h1>
 
+<%= form_tag url_for(:controller => 'students', :action => 'index'), :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<% end %>
+
 <table>
   <thead>
     <tr>
