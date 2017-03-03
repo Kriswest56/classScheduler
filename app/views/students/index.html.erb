@@ -1,40 +1,80 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Students</h1>
+<div style="padding: 20px">
 
-<%= form_tag url_for(:controller => 'students', :action => 'index'), :method => 'get' do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
-    </p>
-<% end %>
+  <div class="jumbotron text-center blueBackground">
+    <h1>Students</h1>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Section</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-2">
+        <% if user_signed_in? %>
+            <div align="right">
+              <label style="color: #2979FF">
+                Welcome <%= current_user.email %>
+              </label>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-  <tbody>
-    <% @students.each do |student| %>
-      <tr>
-        <td><%= student.firstname %></td>
-        <td><%= student.lastname %></td>
-        <td><%= student.section.sectionNumber %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Remove', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <h3><%= link_to('Index', {:controller => 'home', :action => 'index'} ) %></h3>
+      </div>
+      <div class="col-sm-3">
+        <h3><%= link_to 'New Student', new_student_path %></h3>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+  </div>
 
-<br>
+  <div style="margin-top: 50px">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <%= form_tag url_for(:controller => 'students', :action => 'index'), :method => 'get' do %>
+          <div class="col-sm-3">
+            <%= text_field_tag :search, params[:search], class: 'form-control', :placeholder => 'Search by Last Name' %>
+          </div>
+          <div class="col-sm-3">
+            <%= submit_tag "Search", :name => nil, class: 'btn btn-info' %>
+          </div>
+      <% end %>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>
 
-<%= link_to 'New Student', new_student_path %>
-<br>
-<%= link_to('Index', {:controller => 'home', :action => 'index'} ) %>
+  <div style="margin-top: 50px">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Section</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @students.each do |student| %>
+          <tr>
+            <td><%= student.firstname %></td>
+            <td><%= student.lastname %></td>
+            <td><%= student.section.sectionNumber %></td>
+            <td><%= link_to 'Show', student %></td>
+            <td><%= link_to 'Edit', edit_student_path(student) %></td>
+            <td><%= link_to 'Remove', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

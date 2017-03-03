@@ -22,14 +22,11 @@ pre {
 
 a {
   color: #000;
-
-  &:visited {
-    color: #666;
-  }
+  text-decoration: none;
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #039BE5;
+    text-decoration: none !important;
   }
 }
 
@@ -86,4 +83,12 @@ div {
 
 label {
   display: block;
+}
+
+.jumbotron{
+  background-color: #2979FF !important;
+}
+
+h1{
+  color: #ffffff !important;
 }

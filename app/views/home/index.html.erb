@@ -1,14 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Index</h1>
+<div style="padding: 20px">
 
-<%= link_to 'Courses', courses_path%>
-<br>
-<%= link_to 'Sections', sections_path %>
-<br>
-<%= link_to 'Students', students_path %>
-<br>
-<%= link_to 'Teachers', teachers_path%>
-<br>
-<br>
-<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <div class="jumbotron text-center blueBackground">
+    <h1>Index</h1>
+  </div>
+
+  <div>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-2">
+        <% if user_signed_in? %>
+            <div align="right">
+              <label style="color: #2979FF">
+                Welcome <%= current_user.email %>
+              </label>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h3><%= link_to 'Courses', courses_path%></h3>
+      </div>
+      <div class="col-sm-3">
+        <h3><%= link_to 'Sections', sections_path %></h3>
+      </div>
+      <div class="col-sm-3">
+        <h3><%= link_to 'Students', students_path %></h3>
+      </div>
+      <div class="col-sm-3">
+        <h3><%= link_to 'Teachers', teachers_path%></h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h3><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></h3>
+      </div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+    </div>
+  </div>
+
+</div>
